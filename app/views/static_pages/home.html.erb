@@ -1,0 +1,12 @@
+Welcome
+<% if current_user %>
+  <% @blogs.each do |blog| %>
+    <div>
+      <h4><%= blog.title %>- by <%= blog.user.name %></h4>
+      <h5><%= blog.body %></h5>
+      <p><%= link_to "Link", blog %>
+    </div>
+
+  <% end %>
+  <%= paginate @blogs %>
+<% end %>

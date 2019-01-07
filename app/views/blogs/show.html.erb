@@ -1,0 +1,15 @@
+<h2><%= @blog.title %></h2>
+<h4><%= @blog.body %></h4>
+
+Comments
+<% if current_user %>
+  <div id="comment_form">
+    <%= render "comments/form", comment: @comment, blog: @blog %>
+  </div>
+<% end %>
+<div id="comment_list">
+  <%= render "comments/comments", comments: @comments %>
+</div>
+<div id="paginate_comments">
+  <%= paginate @comments %>
+</div>

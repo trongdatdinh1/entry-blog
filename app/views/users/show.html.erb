@@ -1,0 +1,18 @@
+<h1>User: <%= @user.name %></h1>
+<h1>Email: <%= @user.email %></h1>
+<% if current_user %>
+  <h2>Please scroll down to see Follow/Unfollow button :) </h2>
+  <br/>
+  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  <% unless @user.current_user? current_user %>
+    <div id="follow_form">
+      <% if current_user.following?(@user) %>
+        <%= render "unfollow" %>
+      <% else %>
+        <%= render "follow" %>
+      <% end %>
+    </div>
+  <% end %>
+  <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+  Asd
+<% end %>

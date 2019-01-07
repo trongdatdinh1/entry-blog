@@ -1,0 +1,5 @@
+<%= form_for comment, remote: true do |f| %>
+  <%= f.text_area :text %>
+  <%= f.hidden_field :blog_id, value: blog.id %>
+  <%= f.submit "Send" %>
+<% end %>

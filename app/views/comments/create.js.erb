@@ -1,0 +1,3 @@
+$('#comment_form form textarea').val('');
+$("#comment_list").html("<%= escape_javascript(render('comments/comments', comments: @comment.blog.comments.ordered_by_date.page(1))) %>");
+$("#flash").html('<%= j render partial: "shared/flash" %>');
