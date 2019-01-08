@@ -1,15 +1,21 @@
-<h2><%= @blog.title %></h2>
-<h4><%= @blog.body %></h4>
+<h1>Title: <%= @blog.title %></h1>
+<h3>Body: <%= @blog.body %></h3>
+<br/><br/><br/><br/>
 
-Comments
+
 <% if current_user %>
+  Your thougth?
   <div id="comment_form">
     <%= render "comments/form", comment: @comment, blog: @blog %>
   </div>
 <% end %>
+<br/>
+  <h4>Comments</h4>
+
 <div id="comment_list">
   <%= render "comments/comments", comments: @comments %>
 </div>
 <div id="paginate_comments">
-  <%= paginate @comments %>
+  <%= render "comments/paginate_comments", comments: @comments, blog_id: @blog.id %>
 </div>
+

@@ -1,4 +1,7 @@
-<%= form_for @blog do |f| %>
+<div class="col-md-12">
+  <h2>Blogs</h2>
+</div>
+<%= form_for @blog, class:"form-group" do |f| %>
   <% if @blog.errors.any? %>
     <ul>
       <% @blog.errors.full_messages.each do |msg| %>
@@ -11,8 +14,8 @@
     <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
   </div>
   <div class="field">
-    <%= f.text_area :body, placeholder: "Body" %>
+    <%= f.text_area :body, placeholder: "Body", class:"form-control" %>
   </div>
-  <%= f.submit "Create", class: "btn btn-primary" %>
+  <%= f.submit "Create", class: "btn btn-warning form-control" %>
 
 <% end %>

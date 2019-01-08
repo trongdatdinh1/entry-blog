@@ -1,5 +1,5 @@
-<%= form_for comment, remote: true do |f| %>
-  <%= f.text_area :text %>
+<%= form_for comment, remote: true, class:"form-group" do |f| %>
+  <%= f.text_area :text, class:"form-control" %>
   <%= f.hidden_field :blog_id, value: blog.id %>
-  <%= f.submit "Send" %>
+  <%= f.submit "Send", class:"btn btn-warning form-control" %>
 <% end %>

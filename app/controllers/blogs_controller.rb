@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_action :logged_in_user, only: [:new, :create]
+  before_action :find_blog, except: [:index, :new, :create]
 
   def index
     @blogs = Blog.all.ordered_by_date.page params[:page]
@@ -28,5 +29,12 @@ class BlogsController < ApplicationController
   private
   def blog_params
     params.require(:blog).permit :title, :body
+  end
+
+  def find_blog
+    @blog = Blog.find_by id: params[:id]
+    return if @blog
+    flash[:danger] = "Something went wrong"
+    redirect_to root_path
   end
 end

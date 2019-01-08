@@ -11,7 +11,11 @@
 
   <body>
     <%= render "layouts/header" %>
-    <%= render "shared/flash" %>
-    <%= yield %>
+    <% flash.each do |message_type, message| %>
+      <div><%= message %></div>
+    <% end %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

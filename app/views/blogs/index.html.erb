@@ -1,9 +1,21 @@
-<% @blogs.each do |blog| %>
-  <div>
-    <h4><%= blog.title %>- by <%= blog.user.name %></h4>
-    <h5><%= blog.body %></h5>
-    <p><%= link_to "Link", blog %>
-  </div>
+<div class="col-md-12">
+  <h2>Blogs</h2>
+</div>
 
-<% end %>
+<div class="row justify-content-center">
+  <div class="list-group col-md-8 ">
+    <% @blogs.each do |blog| %>
+      <%= link_to blog, class:"list-group-item list-group-item-action flex-column align-items-start" do %>
+        <div class="d-flex w-100 justify-content-between">
+          <h3 class="mb-1"><%= blog.title %></h3>
+          <small><%= time_ago_in_words(blog.created_at) %> ago</small>
+        </div>
+        <p class="mb-1"><%= blog.body %></p>
+        <small>by <%= blog.user.name %>.</small>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+<div class="row justify-content-center">
 <%= paginate @blogs %>
+</div>

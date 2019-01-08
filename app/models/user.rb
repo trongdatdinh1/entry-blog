@@ -3,17 +3,17 @@ class User < ApplicationRecord
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
-  validates :name,  presence: true, length: { maximum: 50 }
-  validates :email, presence: true, length: { maximum: 50 },
+  validates :name, presence: true, length: { maximum: 50, minimum: 4 }
+  validates :email, presence: true, length: { maximum: 50, minimum: 6 },
     format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   has_many :blogs
   has_many :comments
-  has_many :active_relationships, class_name:  "Relationship",
+  has_many :active_relationships, class_name: "Relationship",
     foreign_key: "follower_id",
-    dependent:   :destroy
+    dependent: :destroy
   has_many :passive_relationships, class_name: Relationship.name,
     foreign_key: "followed_id",
     dependent: :destroy

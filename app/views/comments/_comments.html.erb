@@ -1,3 +1,10 @@
 <% comments.each do |comm| %>
-  <p><%= comm.text %> by <%= comm.user.name %></p>
+  <div class="card">
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p><%= comm.text %>.</p>
+        <footer class="blockquote-footer"><%= comm.user.name %></footer>
+      </blockquote>
+    </div>
+  </div>
 <% end %>

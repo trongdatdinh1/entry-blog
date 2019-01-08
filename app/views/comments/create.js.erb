@@ -1,3 +1,4 @@
 $('#comment_form form textarea').val('');
 $("#comment_list").html("<%= escape_javascript(render('comments/comments', comments: @comment.blog.comments.ordered_by_date.page(1))) %>");
-$("#flash").html('<%= j render partial: "shared/flash" %>');
+// <% @comments = @comment.blog.comments.ordered_by_date.page %>
+$("#paginate_comments").html("<%= escape_javascript(render('comments/paginate_comments', comments: Blog.find_by(id: params[:comment][:blog_id]).comments.ordered_by_date.page(1), blog_id: params[:comment][:blog_id] )) %>")
